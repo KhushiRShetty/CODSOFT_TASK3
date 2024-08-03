@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 // Class to represent the user's bank account
-class task3 {
+class BankAcc {
     private double balance;
 
-    public task3(double initialBalance) {
+    public BankAcc(double initialBalance) {
         this.balance = initialBalance;
     }
 
@@ -18,59 +18,59 @@ class task3 {
 
     public String withdraw(double amt) {
         if (amt <= 0) {
-            return "The amount should be more than 0";
+            return "the amount should be more than 0";
         }
         if (amt > balance) {
-            return "No sufficient balance";
+            return "no balance";
         }
         balance = balance - amt;
-        return "Money withdrawn\nNew balance: " + balance;
+        return "money withdrawn\nnew balance: " + balance;
     }
 
     public String deposit(double amt) {
         if (amt <= 0) {
-            return "The amount should be more than 0";
+            return "the amount should be more than 0";
         }
         balance = balance + amt;
-        return "Money deposited\nNew balance: " + balance;
+        return "money deposited\nnew balance: " + balance;
     }
 }
 
 // Class to represent the ATM machine
-public class ATM {
-    private task3 Task3;
+public class task3 {
+    private BankAcc bankAcc;
 
-    public ATM(task3 Task3) {
-        this.Task3 = Task3;
+    public task3(BankAcc bankAcc) {
+        this.bankAcc = bankAcc;
     }
 
     public String checkBalance() {
-        return "Current balance: " + Task3.getBalance();
+        return "current balance: " + bankAcc.getBalance();
     }
 
     public static void main(String[] args) {
-        task3 acc = new task3(100); // Initial balance of 100
-        ATM atm = new ATM(acc);
+        BankAcc acc = new BankAcc(100); 
+        task3 atm = new task3(acc);
         Scanner sc = new Scanner(System.in);
 
         while (true) {
             System.out.println("\nATM Options:");
-            System.out.println("1. Withdraw");
-            System.out.println("2. Deposit");
-            System.out.println("3. Check Balance");
-            System.out.println("4. Exit");
+            System.out.println("1. withdraw");
+            System.out.println("2. deposit");
+            System.out.println("3. check balance");
+            System.out.println("4. exit");
 
-            System.out.print("Enter your choice: ");
+            System.out.print("enter your choice: ");
             int choice = sc.nextInt();
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter the amount: ");
+                    System.out.print("enter the amount: ");
                     double withdrawAmt = sc.nextDouble();
                     System.out.println(acc.withdraw(withdrawAmt));
                     break;
                 case 2:
-                    System.out.print("Enter the amount: ");
+                    System.out.print("enter the amount: ");
                     double depositAmt = sc.nextDouble();
                     System.out.println(acc.deposit(depositAmt));
                     break;
